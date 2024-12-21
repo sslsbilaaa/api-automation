@@ -47,7 +47,7 @@ test('Test Case 2', async ({ request }) => {
     expect(responseData.name).toEqual("morpheus")
     expect(responseData.job).toEqual("leader")
 
-    const valid = ajv.validate(require('./jsonschema/get-objectschema.json'), responseData)
+    const valid = ajv.validate(require('./jsonschema/get-objectspost.json'), responseData)
 
     if (!valid){
         console.error("AJV Validate Errors:", ajv.errorsText());
@@ -78,6 +78,14 @@ test('Test Case 3', async ({ request }) => {
 
     expect(responseData.name).toEqual("morpheus")
     expect(responseData.job).toEqual("zion resident")
+
+    const valid = ajv.validate(require('./jsonschema/get-objectput.json'), responseData)
+
+    if (!valid){
+        console.error("AJV Validate Errors:", ajv.errorsText());
+    }
+
+    expect(valid).toBe(true);
 
 })
 
